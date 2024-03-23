@@ -28,6 +28,13 @@ def search_track(track_name, access_token):
     )
     return response.json()
 
+
+def create_playlist(search_results):
+    song = []
+    playlist = []
+    for i in range(10):
+        playlist.append()
+
 # Example usage
 if __name__ == "__main__":
     for i in bye:
@@ -35,4 +42,20 @@ if __name__ == "__main__":
         songname = i[x+1:]
         access_token = authenticate(CLIENT_ID, CLIENT_SECRET)
         search_results = search_track(songname, access_token)
-    print(search_results)
+        print(search_results)
+
+
+
+features = np.asarray(feature, dtype =np.float32)
+    prediction = model.predict(features)
+    song = []
+    playlistSongs = []
+    for i in range(len(prediction)):
+        if(prediction[i] == mood):
+            playlistSongs.append(trackURI[i])
+        if(len(playlistSongs)>10):
+            break
+    userID = user['id']
+    playlist = sp.user_playlist_create(userID, name = mood, public=True)
+    playlistID = playlist['id']
+    sp.user_playlist_add_tracks(userID, playlistID, playlistSongs)
