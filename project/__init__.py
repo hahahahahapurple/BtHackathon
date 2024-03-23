@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
 # init SQLAlchemy so we can use it later in our models
@@ -27,10 +27,10 @@ def create_app():
                 paragraph += (factors[i] + ": " + str(nums[i]))
             print(paragraph)
 
-
-            
-            
-
+    @app.route('/playlist', methods=['GET'])
+    def playlist():
+        if request.method == 'GET':
+            return render_template('playlist.html')
 
     return app
   
