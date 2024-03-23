@@ -25,7 +25,7 @@ def index():
             paragraph = "I am going to give you a list of critera for songs. Here are the criteria:"
             nums = getNums()
             for i in range(7):
-                paragraph += (factors[i] + ": " + str(nums[i]))
+                paragraph += (" " + factors[i] + ": " + str(nums[i]) + "\n")
             message = {"role": "user", "content": paragraph}
             completion = client.chat.completions.create(
                 model="gpt-3.5-turbo",
