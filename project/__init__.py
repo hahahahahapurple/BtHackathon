@@ -5,7 +5,7 @@ import os
 def create_app():
     app = Flask(__name__)
 
-    from .main import routes
+    from .main import index
 
     return app
   
