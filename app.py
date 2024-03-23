@@ -6,8 +6,7 @@ app = Flask(__name__)
 
 app = create_app()
 app.secret_key = os.urandom(12)
-date = '2022/1/19'
-oauth = OAuth(app)
+date = '2024/3/23'
 
 @app.route('/')
 def index():
