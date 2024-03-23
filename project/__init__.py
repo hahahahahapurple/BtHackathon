@@ -1,7 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from authlib.integrations.flask_client import OAuth
 import os
 # init SQLAlchemy so we can use it later in our models
 def create_app():
