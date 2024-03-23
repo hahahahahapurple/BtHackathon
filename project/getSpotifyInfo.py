@@ -1,6 +1,7 @@
 import requests
 
 bye = ['1. Let It Be', '2. My Heart Will Go On', '3. I Will Always Love You', '4. Hotel California', '5. Somebody to Love']
+#bye = ["1. Let It Be"]
 
 
 SPOTIFY_API_URL = "https://api.spotify.com/v1"
@@ -33,7 +34,11 @@ def create_playlist(search_results):
     song = []
     playlist = []
     for i in range(10):
-        playlist.append()
+        playlist.append(trackURI[i])
+    userID = user['id']
+    playlisteach = sp.user_playlist_create(userID, name = mood, public=True)
+    playlistID = playlisteach['id']
+    sp.user_playlist_add_tracks(userID, playlistID, playlistSongs)
 
 # Example usage
 if __name__ == "__main__":
@@ -42,20 +47,5 @@ if __name__ == "__main__":
         songname = i[x+1:]
         access_token = authenticate(CLIENT_ID, CLIENT_SECRET)
         search_results = search_track(songname, access_token)
-        print(search_results)
+        print(search_results["tracks"]["items"][0]["album"]["id"])
 
-
-
-features = np.asarray(feature, dtype =np.float32)
-    prediction = model.predict(features)
-    song = []
-    playlistSongs = []
-    for i in range(len(prediction)):
-        if(prediction[i] == mood):
-            playlistSongs.append(trackURI[i])
-        if(len(playlistSongs)>10):
-            break
-    userID = user['id']
-    playlist = sp.user_playlist_create(userID, name = mood, public=True)
-    playlistID = playlist['id']
-    sp.user_playlist_add_tracks(userID, playlistID, playlistSongs)
