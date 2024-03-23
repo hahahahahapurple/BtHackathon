@@ -1,3 +1,10 @@
+import numpy as np
+import spotipy
+import csv
+import time
+import getEmotion
+import sys
+
 def getUserHistory(sp, user):
     result = []
     trackURI = []
@@ -29,3 +36,24 @@ def getAudio(sp, trackURI):
             featureTotal.append(feature)
         feature = []
     return featureTotal
+
+def createPlaylist(sp, user, trackURI, feature, mood, model):
+    features = np.asarray(feature, dtype =np.float32)
+    prediction = model.predict(features)
+    song = []
+    playlistSongs = []
+    for i in range(len(prediction)):
+        if(prediction[i] == mood):
+            playlistSongs.append(trackURI[i])
+        if(len(playlistSongs)>10):
+            break
+    userID = user['id']
+    playlist = sp.user_playlist_create(userID, name = mood, public=True)
+    playlistID = playlist['id']
+    sp.user_playlist_add_tracks(userID, playlistID, playlistSongs)
+
+        
+def main(sp, user, model, mood):
+    trackURI, tracks = getUserHistory(sp, user)
+    feature = getAudio(sp, trackURI)
+    createPlaylist(sp, user, trackURI, feature, mood, model)
