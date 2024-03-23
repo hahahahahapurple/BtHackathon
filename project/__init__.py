@@ -10,7 +10,7 @@ from openai import OpenAI
 def create_app():
     app = Flask(__name__)
 
-    app.config['OPENAI_API_KEY'] = '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'
+    app.config['OPENAI_API_KEY'] = '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'
 
 
     return app
