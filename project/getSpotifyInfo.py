@@ -54,6 +54,6 @@ if __name__ == "__main__":
         songname = i[x+1:]
         access_token = authenticate(CLIENT_ID, CLIENT_SECRET)
         search_results = search_track(songname, access_token)
-        track_id.append("spotify:track:" + search_results["tracks"]["items"][0]["album"]["id"])
+        track_id.append("spotify:track:" + search_results["tracks"]["items"][0]["id"])
     print(track_id)
-    create_playlist(user_id, "testplaylistNEW3", track_id)
+    create_playlist(user_id, "testplaylistNEW5", track_id)
