@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 
-@main.route('/')
+@main.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('index.html')
+    if request.method == 'GET':
+        return render_template('index.html')
