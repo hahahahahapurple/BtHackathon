@@ -3,12 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 # init SQLAlchemy so we can use it later in our models
 
-def getFactors():
-    factors = []
+def getNums():
+    nums = []
     for i in range(7):
         item = request.form.get("SOMETHING" + str(i + 1))
-        factors.append(item)
-    return factors
+        nums.append(item)
+    return nums
 
 
 
@@ -20,7 +20,14 @@ def create_app():
         if request.method == 'GET':
             return render_template('index.html')
         elif request.method == 'POST':
-            getFactors()
+            factors = ["1","1","1","1","1","1","1"]
+            paragraph = "I am going to give you a list of critera for songs. Here are the criteria:"
+            nums = getNums()
+            for i in range(7):
+                paragraph += (factors[i] + ": " + str(nums[i]))
+            print(paragraph)
+
+
             
             
 
