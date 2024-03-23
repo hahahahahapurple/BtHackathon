@@ -13,7 +13,6 @@ def create_app():
     app.secret_key = os.urandom(12)
 
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
     
