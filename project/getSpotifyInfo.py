@@ -1,5 +1,6 @@
 import requests
 
+user_id = 'vbbgi9atrwy0u3e7ki3d42fte'
 bye = ['1. Let It Be', '2. My Heart Will Go On', '3. I Will Always Love You', '4. Hotel California', '5. Somebody to Love']
 #bye = ["1. Let It Be"]
 
@@ -8,6 +9,9 @@ SPOTIFY_API_URL = "https://api.spotify.com/v1"
 SEARCH_ENDPOINT = "/search"
 CLIENT_ID = "dcee707a5f2449c8a23dd20234727874"
 CLIENT_SECRET = "e0353b0e94af4cfa986484d7b7a3f183"
+REDIRECT_URI = 'http://localhost:8080/'
+SCOPE = 'playlist-modify-public'
+
 
 def authenticate(client_id, client_secret):
     auth_response = requests.post(
