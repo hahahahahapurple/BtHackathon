@@ -1,7 +1,10 @@
-from flask import Flask, render_template, url_for, redirect, request, flash
-import os
+from flask import Flask, jsonify
 
-@main.route('/', methods=['POST', 'GET'])
-def index():
-    if request.method == 'GET':
-        return render_template('index.html')
+# Assume app is initialized in the __init__.py file.
+from . import create_app
+
+app = create_app()
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
