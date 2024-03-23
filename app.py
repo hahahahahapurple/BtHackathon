@@ -122,7 +122,7 @@ def index():
 @app.route('/playlist', methods=['GET'])
 def playlist():
      if request.method == 'GET':
-          return render_template('playlist.html')
+          return render_template('playlist.html', list=session['hi'])
 
 if __name__ == '__main__':
     app.run(debug=True)

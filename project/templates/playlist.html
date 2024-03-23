@@ -7,20 +7,19 @@
     </head>
     <body class="h-100">
         <div class="p-3 mt-3 container transparent rounded shadow w-100 my-auto">
-            <a href="#link to playlist" class="link text-light"><h1 class="display-1 text-light">your playlist :)</h1></a>
+            <a href="#link to playlist" class="link text-dark"><h1 class="display-1 text-dark">your playlist :)</h1></a>
         </div>
 
         <div class="container m-3 w-100 my-auto mx-auto">
         <div class="row">
-            {% for i in list %}
+            {% for i in range(8) %}
             <div class="col-sm-3 p-1">
               <div class="card shadow transparent m-3 border-0">
-                <img src="..." class="card-img-top" alt="cover-img">
+                <img src="{{list[2][i]}}" class="card-img-top" alt="cover-img">
                 <div class="card-body">
-                  <h5 class="card-title text-light">i</h5>
+                  <h5 class="card-title text-dark">{{list[0][i]}}</h5>
                   <p class="
-                  card-text text-light">info about the song (artist, duration, genre, etc.)</p>
-                  <a href="#" class="btn btn-transparent text-light">Listen on Spotify</a>
+                  card-text text-dark">{{list[1][i]}}</p>
                 </div>
               </div>
             </div>
