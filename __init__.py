@@ -12,6 +12,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
     app.secret_key = os.urandom(12)
+    #tes
 
     db.init_app(app)
     login_manager = LoginManager()
