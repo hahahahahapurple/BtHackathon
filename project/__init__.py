@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
+import openai
 # init SQLAlchemy so we can use it later in our models
 
 def getNums():
@@ -25,7 +26,8 @@ def create_app():
             nums = getNums()
             for i in range(7):
                 paragraph += (factors[i] + ": " + str(nums[i]))
-            print(paragraph)
+            message = {"role": "user", "content": paragraph}
+            return render_template('index.html')
 
     @app.route('/playlist', methods=['GET'])
     def playlist():
