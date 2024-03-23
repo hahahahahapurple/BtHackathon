@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(304deg, #8d2a2a, #bf7c3b, #adb028, #53b42e, #209f90, #206b9f, #50209f, #9f209f, #9f205a);
+    background-size: 1800% 1800%;
+
+    -webkit-animation: AnimationName 20s ease infinite;
+    -moz-animation: AnimationName 20s ease infinite;
+    animation: AnimationName 20s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:45% 0%}
+    50%{background-position:56% 100%}
+    100%{background-position:45% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:45% 0%}
+    50%{background-position:56% 100%}
+    100%{background-position:45% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:45% 0%}
+    50%{background-position:56% 100%}
+    100%{background-position:45% 0%}
+}
+
+.btn-transparent {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-transparent:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.transparent {
+    background-color: rgba(255, 255, 255, 0.5);
+}
