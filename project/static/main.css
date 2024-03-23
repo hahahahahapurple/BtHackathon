@@ -27,6 +27,18 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.custom-range::-webkit-slider-thumb {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  .custom-range::-moz-range-thumb {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  .custom-range::-ms-thumb {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
 .btn-transparent:hover {
     background-color: rgba(255, 255, 255, 0.7);
 }
