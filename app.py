@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import openai
 from openai import OpenAI
+import jinja2
+
 client = OpenAI(api_key='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')
 
 app = create_app()
