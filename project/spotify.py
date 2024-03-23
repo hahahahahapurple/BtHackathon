@@ -3,9 +3,9 @@ import json
 import spotipy
 import spotipy.util as util
 import os
-import getPicture
-import getMood
-import createPlaylist
+import getPicture as getPicture
+import getEmotion
+import makeSpotifyPlaylist
 import getTrainingData
 import learnSongs
 
@@ -35,7 +35,7 @@ try:
                                        client_id='563f890f0bc540309c44d40e35a0a462',
                                        client_secret = '343030b9e9d0440b80bebb96647485af',
                                        redirect_uri='http://google.com/')
-    
+
 except:
 	os.remove(".cache-{}".format(username))
 	token = util.prompt_for_user_token(username,scopes,
@@ -61,7 +61,8 @@ if token:
                 else:
                     mood = "getMood.getMood()"
                 #jfjsdkfjaslkfjdsf
-                createPlaylist.main(sp, user, model, mood)
+                model = learnSongs.main()
+                makeSpotifyPlaylist.main(sp, user, model, mood)
                 print("playlist successfully made")
             if choice == "1":
                  break
