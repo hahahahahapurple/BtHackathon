@@ -25,6 +25,7 @@ def authenticate(client_id, client_secret):
     )
     auth_response_data = auth_response.json()
     return auth_response_data['access_token']
+\
 
 # Function to search for a track by name
 def search_track(track_name, access_token):
@@ -39,11 +40,12 @@ def search_track(track_name, access_token):
 
 
 def create_playlist(user_id, playlist_name, track_ids):
-    playlist = sp.user_playlist_create(user=user_id, name=playlist_name, public=True)
-    track_uris = ['spotify:track:' + track_id for track_id in track_ids]
-    sp.playlist_add_items(playlist['id'], track_uris)
+    playlist = sp.user_playlist_create(user=user_id, name=playlist_name, public=True, description = "Test")
+    id = playlist['id']
+    print(id)
+    sp.playlist_add_items(playlist_id=id, items = track_ids)
 
-
+#https://open.spotify.com/playlist/0TRCN4obn8F4q4K4INiE5f?si=699b394c9e284109
 # Example usage
 if __name__ == "__main__":
     track_id = []
@@ -52,5 +54,6 @@ if __name__ == "__main__":
         songname = i[x+1:]
         access_token = authenticate(CLIENT_ID, CLIENT_SECRET)
         search_results = search_track(songname, access_token)
-        track_id.append(search_results["tracks"]["items"][0]["album"]["id"])
-    create_playlist(user_id, "testplaylist", track_id)
+        track_id.append("spotify:track:" + search_results["tracks"]["items"][0]["album"]["id"])
+    print(track_id)
+    create_playlist(user_id, "testplaylistNEW3", track_id)
