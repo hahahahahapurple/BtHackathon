@@ -1,5 +1,5 @@
 from project import create_app
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 import os
 import openai
@@ -8,6 +8,7 @@ import jinja2
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+
 
 SPOTIFY_API_URL = "https://api.spotify.com/v1"
 SEARCH_ENDPOINT = "/search"
@@ -47,6 +48,26 @@ def create_playlist(user_id, playlist_name, track_ids):
     id = playlist['id']
     print(id)
     sp.playlist_add_items(playlist_id=id, items = track_ids)
+
+def getStuff(songs):
+    track_names = []
+    track_artists = []
+    track_images = []
+    for i in songs:
+        try:
+            x = i.index(".")
+            songname = i[x+1:]
+        except:
+            songname = i
+        access_token = authenticate(CLIENT_ID, CLIENT_SECRET)
+        search_results = search_track(songname, access_token)
+
+        track = search_results["tracks"]["items"][0]
+        track_names.append(track["name"])
+        track_artists.append(track["artists"][0]["name"])
+        track_images.append(["album"]["images"][0]["url"])
+
+        return [track_names, track_artists, track_images]
 
 def makePlaylist(user_id, bye):
     track_id = []
@@ -92,6 +113,9 @@ def index():
             song_names_list = [song.strip() for song in song_names_str.split(';')]
             print(song_names_list)
             makePlaylist('vbbgi9atrwy0u3e7ki3d42fte', song_names_list)
+
+            trackinfo = getStuff(song_names_list)
+            session['hi'] = trackinfo
 
             return redirect('/playlist')
         
