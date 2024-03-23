@@ -36,7 +36,7 @@ def index():
             song_names_list = [song.strip() for song in song_names_str.split(';')]
 
             print(song_names_list)
-            return render_template('index.html')
+            return redirect('/playlist')
         
 @app.route('/playlist', methods=['GET'])
 def playlist():
