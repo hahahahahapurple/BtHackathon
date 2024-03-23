@@ -26,6 +26,7 @@ def create_app():
             for i in range(7):
                 paragraph += (factors[i] + ": " + str(nums[i]))
             print(paragraph)
+            return render_template('index.html')
 
 
             
