@@ -37,6 +37,11 @@ def index():
 
             print(song_names_list)
             return render_template('index.html')
+        
+@app.route('/playlist', methods=['GET'])
+def playlist():
+     if request.method == 'GET':
+          return render_template('playlist.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
