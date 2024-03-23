@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import openai
 from openai import OpenAI
-client = OpenAI()
 # init SQLAlchemy so we can use it later in our models
 
 def getNums():
